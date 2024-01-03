@@ -1,0 +1,25 @@
+generator categoria {
+    provider = "prisma-categoria-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model Usuarios {
+    id          Int     @id @default(autoincrement())
+    Usuario  String  @unique @db.VarChar(200)
+    email    String  @unique @db.VarChar(50)
+    telefone String  @unique @db.VarChar(15)
+}  
+
+model Produtos {
+    id          Int         @id @default(autoincrement()) 
+    nome        String      @db.VarChar(50)
+    categoria   String      @db.VarChar(100)
+    preco       Float       @db.DoublePrecision
+    quantidade  Int         @db.Integer
+    imagem      String      @db.VarChar(200)
+    descricao   String      @db.VarChar(50)
+}
